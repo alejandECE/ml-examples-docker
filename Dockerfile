@@ -5,6 +5,9 @@ FROM tensorflow/tensorflow:latest-gpu
 ARG user=worker
 ARG uid=1000
 
+# Avoid interactions
+ENV DEBIAN_FRONTEND=noninteractive
+
 # Setting environmental variable pointing to working dir (user home)
 ENV WORKDIR=/home/$user
 
@@ -13,6 +16,8 @@ RUN apt-get update -y
 RUN apt-get install python3 -y
 RUN apt-get install python3-pip -y
 RUN pip3 install --upgrade pip
+RUN apt install graphviz -y
+RUN apt-get install python3-tk -y
 
 # Adding non root user
 RUN useradd --home-dir ${WORKDIR} --create-home --uid $uid $user

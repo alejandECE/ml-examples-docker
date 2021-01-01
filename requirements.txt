@@ -6,3 +6,5 @@ pandas
 sklearn
 apache-beam
 apache-beam[gcp]
+pydots
+tensorflow-datasets
